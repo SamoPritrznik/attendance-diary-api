@@ -6,5 +6,5 @@ var AdminController = require('./src/AdminController');
 app.use('/admins', AdminController);
 
 var ConstructionController = require('./src/ConstructionController');
-app.use('/admins', ConstructionController);
+app.use('/constructions', ConstructionController);
 module.exports = app;
