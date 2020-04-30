@@ -4,7 +4,7 @@ var TimeSchema = new mongoose.Schema({
   admin_id: String,
   construction_id: String,
   Timestamp_date: Date,
-  Shift: BigInt
+  Shift: Number
 });
 mongoose.model('Time', TimeSchema);
 module.exports = mongoose.model('Time');
