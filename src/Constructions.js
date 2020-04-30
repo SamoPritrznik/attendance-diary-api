@@ -4,5 +4,5 @@ var ConstructionSchema = new mongoose.Schema({
   site_name: String,
   used: Boolean
 });
-mongoose.model('Admins', ConstructionSchema);
-module.exports = mongoose.model('Admins');
+mongoose.model('Constructions', ConstructionSchema);
+module.exports = mongoose.model('Constructions');
