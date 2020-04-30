@@ -7,6 +7,7 @@ router.use(bodyParser.json());
 var Admins = require('./Admins');
 var Constructions = require('./Constructions');
 var Workers = require('./Workers');
+var Time = require('./Time');
 
 //doda admina
 router.post('/admins', function (req, res) {
@@ -144,6 +145,51 @@ router.put('/workers/:id', function (req, res) {
     Workers.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, worker) {
         if (err) return res.status(500).send("There was a problem updating the user.");
         res.status(200).send(worker);
+    });
+});
+
+router.post('/workers', function (req, res) {
+    Workers.create({
+            name : req.body.name,
+            surname: req.body.surname,
+            phone_num : req.body.phone_num,
+        }, 
+        function (err, worker) {
+            if (err) return res.status(500).send("Prišlo je do težave z shranjevanjem admina");
+            res.status(200).send(worker);
+        });
+});
+
+//vrne vse čas
+router.get('/time', function (req, res) {
+    Time.find({}, function (err, time) {
+        if (err) return res.status(500).send("Prišlo je do težave z branjem adminov");
+        res.status(200).send(time);
+    });
+});
+
+//vrne en čas
+router.get('/time/:id', function (req, res) {
+    Time.findById(req.params.id, function (err, time) {
+        if (err) return res.status(500).send("There was a problem finding the user.");
+        if (!construction) return res.status(404).send("No user found.");
+        res.status(200).send(time);
+    });
+});
+
+//izbriše en čas
+router.delete('/time/:id', function (req, res) {
+    Time.findByIdAndRemove(req.params.id, function (err, time) {
+        if (err) return res.status(500).send("There was a problem deleting the user.");
+        res.status(200).send("User "+ time +" was deleted.");
+    });
+});
+
+//posodobi en čas
+router.put('/time/:id', function (req, res) {
+    Time.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, time) {
+        if (err) return res.status(500).send("There was a problem updating the user.");
+        res.status(200).send(time);
     });
 });
 module.exports = router;
