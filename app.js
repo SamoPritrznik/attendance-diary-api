@@ -7,6 +7,6 @@ var SwaggerDocument = require('./api/swagger.json');
 
 var Controller = require('./src/Controller');
 app.use('/diary', Controller);
-app.use('/docs',swaggerUi.serve, SwaggerDocument)
+app.use('/docs', SwaggerDocument)
 
 module.exports = app;
