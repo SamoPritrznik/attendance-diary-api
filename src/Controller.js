@@ -2,6 +2,8 @@
 var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
+var swaggerUi = require('swagger-ui-express');
+var SwaggerDocument = require('../api/swagger.json');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 var Admins = require('./Admins');
@@ -184,6 +186,8 @@ router.delete('/time/:id', function (req, res) {
         res.status(200).send("User "+ time +" was deleted.");
     });
 });
+
+router.use('/docs', swaggerUi.serve, SwaggerDocument)
 
 //posodobi en čas
 router.put('/time/:id', function (req, res) {
