@@ -82,7 +82,7 @@
              }
           }
        },
-       "/admin/{id}": {
+       "/admins/{id}": {
           "get": {
              "summary": "Gets an admin",
              "description": "Returns a single admin for its id",
@@ -305,7 +305,7 @@
              }
           }
        },
-       "/worker/{id}": {
+       "/workers/{id}": {
           "get": {
              "summary": "Gets a worker",
              "description": "Returns a worker for its id",
@@ -405,7 +405,7 @@
              }
           }
        },
-       "/construction/{id}": {
+       "/constructions/{id}": {
           "get": {
              "summary": "Gets a construction",
              "description": "Returns a construction for its id",
