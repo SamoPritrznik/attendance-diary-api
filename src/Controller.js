@@ -187,7 +187,7 @@ router.delete('/time/:id', function (req, res) {
     });
 });
 
-router.use('/docs', swaggerUi.serve, SwaggerDocument)
+router.use('/docs', swaggerUi.serve, swaggerUi.setup(SwaggerDocument));
 
 //posodobi en čas
 router.put('/time/:id', function (req, res) {
