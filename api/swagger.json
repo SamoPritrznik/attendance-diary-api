@@ -1,12 +1,45 @@
 {
-    "openapi": "3.0.0",
+    "swagger": "2.0",
     "info": {
-        "version": "1.0.0",
-        "title": "attendance-diary-api documentation",
-        "description": "a documentation explaining how the restfull api works",
-        "license": {
-            "name": "MIT",
-            "url": "https://opensource.org/licenses/MIT"
-        }
+       "version": "1.0.0",
+       "title": "attendance-diary-api documentation",
+       "description": "a documentation explaining how the restfull api works"
+    },
+    "schemes": [
+       "https"
+    ],
+    "host": "attendance-diary.herokuapp.com",
+    "basePath": "/diary",
+    "paths": {
+       "/admins": {
+          "get": {
+             "summary": "Gets all admins",
+             "description": "Returns a list containing all admins.",
+             "responses": {
+                "200": {
+                   "description": "A list of Admins",
+                   "schema": {
+                      "type": "array",
+                      "items": {
+                         "properties": {
+                            "name": {
+                               "type": "string"
+                            },
+                            "surname": {
+                               "type": "string"
+                            },
+                            "email": {
+                               "type": "string"
+                            },
+                            "password": {
+                               "type": "string"
+                            }
+                         }
+                      }
+                   }
+                }
+             }
+          }
+       }
     }
-}
+ }
