@@ -1,13 +1,12 @@
 {
-    "swagger": "2.0",
+    "openapi": "3.0.0",
     "info": {
         "version": "1.0.0",
         "title": "attendance-diary-api documentation",
-        "description": "documentation",
+        "description": "a documentation explaining how the restfull api works",
         "license": {
             "name": "MIT",
             "url": "https://opensource.org/licenses/MIT"
         }
     }
-
 }
