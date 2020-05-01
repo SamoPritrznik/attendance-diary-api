@@ -39,6 +39,175 @@
                    }
                 }
              }
+          },
+          "post": {
+             "summary": "Creates an admin",
+             "description": "Adds a new admin to the list.",
+             "parameters": [
+                {
+                   "name": "admin",
+                   "in": "body",
+                   "description": "To create an admin.",
+                   "schema": {
+                      "required": [
+                         "name",
+                         "surname",
+                         "email",
+                         "password"
+                      ],
+                      "properties": {
+                         "name": {
+                            "type": "string"
+                         },
+                         "surname": {
+                            "type": "string"
+                         },
+                         "email": {
+                            "type": "string"
+                         },
+                         "password": {
+                            "type": "string"
+                         }
+                      }
+                   }
+                }
+             ],
+             "responses": {
+                "204": {
+                   "description": "Admin succesfully created."
+                },
+                "400": {
+                   "description": "Admin couldn't have been created."
+                }
+             }
+          }
+       },
+       "/time": {
+          "get": {
+             "summary": "Gets all time",
+             "description": "Returns a list containing all time.",
+             "responses": {
+                "200": {
+                   "description": "A list of time",
+                   "schema": {
+                      "type": "array",
+                      "items": {
+                         "properties": {
+                            "worker_id": {
+                               "type": "string"
+                            },
+                            "construction_id": {
+                               "type": "string"
+                            },
+                            "admin_id": {
+                               "type": "string"
+                            },
+                            "Timestamp_date": {
+                               "type": "string"
+                            },
+                            "Shift": {
+                               "type": "number"
+                            }
+                         }
+                      }
+                   }
+                }
+             }
+          },
+          "post": {
+             "summary": "Creates a time",
+             "description": "Adds a new time to the list.",
+             "parameters": [
+                {
+                   "name": "time",
+                   "in": "body",
+                   "description": "To create a time.",
+                   "schema": {
+                      "required": [
+                         "name",
+                         "surname",
+                         "email",
+                         "password"
+                      ],
+                      "properties": {
+                         "name": {
+                            "type": "string"
+                         },
+                         "surname": {
+                            "type": "string"
+                         },
+                         "email": {
+                            "type": "string"
+                         },
+                         "password": {
+                            "type": "string"
+                         }
+                      }
+                   }
+                }
+             ],
+             "responses": {
+                "204": {
+                   "description": "Admin succesfully created."
+                },
+                "400": {
+                   "description": "Admin couldn't have been created."
+                }
+             }
+          }
+       },
+       "/workers": {
+          "get": {
+             "summary": "Gets all workers",
+             "description": "Returns a list containing all workers.",
+             "responses": {
+                "200": {
+                   "description": "A list of workers",
+                   "schema": {
+                      "type": "array",
+                      "items": {
+                         "properties": {
+                            "name": {
+                               "type": "string"
+                            },
+                            "surname": {
+                               "type": "string"
+                            },
+                            "phone_num": {
+                               "type": "string"
+                            }
+                         }
+                      }
+                   }
+                }
+             }
+          }
+       },
+       "/constructions": {
+          "get": {
+             "summary": "Gets all constructions",
+             "description": "Returns a list containing all constructions.",
+             "responses": {
+                "200": {
+                   "description": "A list of constructions",
+                   "schema": {
+                      "type": "array",
+                      "items": {
+                         "properties": {
+                            "location": {
+                               "type": "string"
+                            },
+                            "site_name": {
+                               "type": "string"
+                            },
+                            "used": {
+                               "type": "booleana"
+                            }
+                         }
+                      }
+                   }
+                }
+             }
           }
        }
     }
