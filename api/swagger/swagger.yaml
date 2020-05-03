@@ -55,6 +55,38 @@ paths:
           description: Admin succesfully created.
         400:
           description: Admin couldn't have been created.
+    put:
+      summary: updated an admin
+      description: updates a single admin for its id
+      parameters:
+        - name: admin
+          in: body
+          required: true
+          description: The admin's id
+          schema:
+            required:
+              - name
+              - surname
+              - email
+              - password
+              - id
+            properties:
+              name:
+                type: string
+              surname:
+                type: string
+              email:
+                type: string
+              password:
+                type: string
+              id:
+                type: string
+          
+      responses:
+        200:
+          description: An Admin has been updated
+        404:
+          description: The Admin does not exist
   /admins/{id}:
     get:
       summary: Gets an admin
@@ -94,30 +126,6 @@ paths:
           description: An Admin has been deleted
         404:
           description: The Admin does not exists
-    put:
-      summary: updated an admin
-      description: updated a single admin for its id
-      parameters:
-        - id: id
-        - name: name
-        - surname: surname
-        - email: email
-        - password: password
-          in: path
-          required: true
-          description: The admin's id
-          schema:
-            required:
-              - name
-              - surname
-              - email
-              - password
-          
-      responses:
-        200:
-          description: An Admin has been updated
-        404:
-          description: The Admin does not exist
   /time:
     get:
       summary: Gets all time
@@ -171,6 +179,38 @@ paths:
           description: Time succesfully created.
         400:
           description: Time couldn't have been created.
+    put:
+      summary: updates time
+      description: updates time for its id
+      parameters:
+        - name: time
+          in: body
+          required: true
+          description: The time's id
+          schema:
+            required:
+              - worker_id
+              - construction_id
+              - admin_id
+              - Timestamp_date
+              - Shift
+            properties:
+              worker_id:
+                type: string
+              construction_id:
+                type: string
+              admin_id:
+                type: string
+              Timestamp_date:
+                type: string
+                format: date
+              Shift:
+                type: number
+      responses:
+        200:
+          description: An Admin has been updated
+        404:
+          description: The Admin does not exist
   /time/{id}:
     get:
       summary: Gets time
@@ -199,6 +239,20 @@ paths:
                 type: number
         404:
           description: The time does not exists.
+    delete:
+      summary: Deletes time
+      description: Deletes time for its id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The time's id
+          type: string
+      responses:
+        200:
+          description: Time has been deleted
+        404:
+          description: Time does not exists
   /workers:
     get:
       summary: Gets all workers
@@ -240,6 +294,31 @@ paths:
           description: Worker succesfully created.
         400:
           description: Worker couldn't have been created.
+    put:
+      summary: updates a worker
+      description: updates a worker for its id
+      parameters:
+        - name: worker
+          in: body
+          required: true
+          description: The workes's id
+          schema:
+            required:
+              - name
+              - surname
+              - phone_num
+            properties:
+              name:
+                type: string
+              surname:
+                type: string
+              phone_num:
+                type: string
+      responses:
+        200:
+          description: A worker has been updated
+        404:
+          description: The worker does not exist
   /workers/{id}:
     get:
       summary: Gets a worker
@@ -263,6 +342,20 @@ paths:
                 type: string
         404:
           description: The worker does not exists.
+    delete:
+      summary: Deletes a worker
+      description: Deletes a worker for its id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The worker's id
+          type: string
+      responses:
+        200:
+          description: A worker has been deleted
+        404:
+          description: Worker does not exists
   /constructions:
     get:
       summary: Gets all constructions
@@ -304,6 +397,31 @@ paths:
           description: Construction succesfully created.
         400:
           description: Construction couldn't have been created.
+    put:
+      summary: updates a construction
+      description: updates a construction for its id
+      parameters:
+        - name: construction
+          in: body
+          required: true
+          description: The workes's id
+          schema:
+            required:
+              - location
+              - site_name
+              - used
+            properties:
+              location:
+                type: string
+              site_name:
+                type: string
+              used:
+                type: boolean
+      responses:
+        200:
+          description: A construction has been updated
+        404:
+          description: The construction does not exist
   /constructions/{id}:
     get:
       summary: Gets a construction
@@ -327,3 +445,17 @@ paths:
                 type: boolean
         404:
           description: The construction does not exists.
+    delete:
+      summary: Deletes a constructio
+      description: Deletes a construction for its id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The construction's id
+          type: string
+      responses:
+        200:
+          description: Construction has been deleted
+        404:
+          description: Construction does not exists

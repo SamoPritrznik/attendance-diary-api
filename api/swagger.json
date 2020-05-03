@@ -1,445 +1,701 @@
 {
-    "swagger": "2.0",
-    "info": {
-       "version": "1.0.0",
-       "title": "attendance-diary-api documentation",
-       "description": "a documentation explaining how the restfull api works"
-    },
-    "schemes": [
-       "https"
-    ],
-    "host": "attendance-diary.herokuapp.com",
-    "basePath": "/diary",
-    "paths": {
-       "/admins": {
-          "get": {
-             "summary": "Gets all admins",
-             "description": "Returns a list containing all admins.",
-             "responses": {
-                "200": {
-                   "description": "A list of Admins",
-                   "schema": {
-                      "type": "array",
-                      "items": {
-                         "properties": {
-                            "name": {
-                               "type": "string"
-                            },
-                            "surname": {
-                               "type": "string"
-                            },
-                            "email": {
-                               "type": "string"
-                            },
-                            "password": {
-                               "type": "string"
-                            }
-                         }
-                      }
+   "swagger": "2.0",
+   "info": {
+     "version": "22.0.0",
+     "title": "attendance-diary-api documentation",
+     "description": "a documentation explaining how the restfull api works"
+   },
+   "schemes": [
+     "https"
+   ],
+   "host": "attendance-diary.herokuapp.com",
+   "basePath": "/diary",
+   "paths": {
+     "/admins": {
+       "get": {
+         "summary": "Gets all admins",
+         "description": "Returns a list containing all admins.",
+         "responses": {
+           "200": {
+             "description": "A list of Admins",
+             "schema": {
+               "type": "array",
+               "items": {
+                 "properties": {
+                   "name": {
+                     "type": "string"
+                   },
+                   "surname": {
+                     "type": "string"
+                   },
+                   "email": {
+                     "type": "string"
+                   },
+                   "password": {
+                     "type": "string"
                    }
-                }
+                 }
+               }
              }
-          },
-          "post": {
-             "summary": "Creates an admin",
-             "description": "Adds a new admin to the list.",
-             "parameters": [
-                {
-                   "name": "admin",
-                   "in": "body",
-                   "description": "To create an admin.",
-                   "schema": {
-                      "required": [
-                         "name",
-                         "surname",
-                         "email",
-                         "password"
-                      ],
-                      "properties": {
-                         "name": {
-                            "type": "string"
-                         },
-                         "surname": {
-                            "type": "string"
-                         },
-                         "email": {
-                            "type": "string"
-                         },
-                         "password": {
-                            "type": "string"
-                         }
-                      }
-                   }
-                }
-             ],
-             "responses": {
-                "204": {
-                   "description": "Admin succesfully created."
-                },
-                "400": {
-                   "description": "Admin couldn't have been created."
-                }
-             }
-          }
+           }
+         }
        },
-       "/admins/{id}": {
-          "get": {
-             "summary": "Gets an admin",
-             "description": "Returns a single admin for its id",
-             "parameters": [
-                {
-                   "name": "id",
-                   "in": "path",
-                   "required": true,
-                   "description": "The admin's id",
+       "post": {
+         "summary": "Creates an admin",
+         "description": "Adds a new admin to the list.",
+         "parameters": [
+           {
+             "name": "admin",
+             "in": "body",
+             "description": "To create an admin.",
+             "schema": {
+               "required": [
+                 "name",
+                 "surname",
+                 "email",
+                 "password"
+               ],
+               "properties": {
+                 "name": {
                    "type": "string"
-                }
-             ],
-             "responses": {
-                "200": {
-                   "description": "An admin",
-                   "schema": {
-                      "properties": {
-                         "name": {
-                            "type": "string"
-                         },
-                         "surname": {
-                            "type": "string"
-                         },
-                         "email": {
-                            "type": "string"
-                         },
-                         "password": {
-                            "type": "string"
-                         }
-                      }
-                   }
-                },
-                "404": {
-                   "description": "The Admin does not exists."
-                }
-             }
-          }
-       },
-       "/time": {
-          "get": {
-             "summary": "Gets all time",
-             "description": "Returns a list containing all time.",
-             "responses": {
-                "200": {
-                   "description": "A list of time",
-                   "schema": {
-                      "type": "array",
-                      "items": {
-                         "properties": {
-                            "worker_id": {
-                               "type": "string"
-                            },
-                            "construction_id": {
-                               "type": "string"
-                            },
-                            "admin_id": {
-                               "type": "string"
-                            },
-                            "Timestamp_date": {
-                               "type": "string"
-                            },
-                            "Shift": {
-                               "type": "number"
-                            }
-                         }
-                      }
-                   }
-                }
-             }
-          },
-          "post": {
-             "summary": "Creates a time",
-             "description": "Adds a new time to the list.",
-             "parameters": [
-                {
-                   "name": "time",
-                   "in": "body",
-                   "description": "To create a time.",
-                   "schema": {
-                      "required": [
-                         "worker_id",
-                         "construction_id",
-                         "admin_id",
-                         "Timestamp_date",
-                         "Shift"
-                      ],
-                      "properties": {
-                         "worker_id": {
-                            "type": "string"
-                         },
-                         "construction_id": {
-                            "type": "string"
-                         },
-                         "admin_id": {
-                            "type": "string"
-                         },
-                         "Timestamp_date": {
-                            "type": "string"
-                         },
-                         "Shift": {
-                            "type": "number"
-                         }
-                      }
-                   }
-                }
-             ],
-             "responses": {
-                "204": {
-                   "description": "Time succesfully created."
-                },
-                "400": {
-                   "description": "Time couldn't have been created."
-                }
-             }
-          }
-       },
-       "/time/{id}": {
-          "get": {
-             "summary": "Gets time",
-             "description": "Returns time for its id",
-             "parameters": [
-                {
-                   "name": "id",
-                   "in": "path",
-                   "required": true,
-                   "description": "The time's id",
+                 },
+                 "surname": {
                    "type": "string"
-                }
-             ],
-             "responses": {
-                "200": {
-                   "description": "time",
-                   "schema": {
-                      "properties": {
-                         "worker_id": {
-                            "type": "string"
-                         },
-                         "construction_id": {
-                            "type": "string"
-                         },
-                         "admin_id": {
-                            "type": "string"
-                         },
-                         "Timestamp_date": {
-                            "type": "string"
-                         },
-                         "Shift": {
-                            "type": "number"
-                         }
-                      }
-                   }
-                },
-                "404": {
-                   "description": "The time does not exists."
-                }
-             }
-          }
-       },
-       "/workers": {
-          "get": {
-             "summary": "Gets all workers",
-             "description": "Returns a list containing all workers.",
-             "responses": {
-                "200": {
-                   "description": "A list of workers",
-                   "schema": {
-                      "type": "array",
-                      "items": {
-                         "properties": {
-                            "name": {
-                               "type": "string"
-                            },
-                            "surname": {
-                               "type": "string"
-                            },
-                            "phone_num": {
-                               "type": "string"
-                            }
-                         }
-                      }
-                   }
-                }
-             }
-          },
-          "post": {
-             "summary": "Creates a worker",
-             "description": "Adds a new worker to the list.",
-             "parameters": [
-                {
-                   "name": "worker",
-                   "in": "body",
-                   "description": "To create a worker.",
-                   "schema": {
-                      "required": [
-                         "name",
-                         "surname",
-                         "phone_num"
-                      ],
-                      "properties": {
-                         "name": {
-                            "type": "string"
-                         },
-                         "surname": {
-                            "type": "string"
-                         },
-                         "phone_num": {
-                            "type": "string"
-                         }
-                      }
-                   }
-                }
-             ],
-             "responses": {
-                "204": {
-                   "description": "Worker succesfully created."
-                },
-                "400": {
-                   "description": "Worker couldn't have been created."
-                }
-             }
-          }
-       },
-       "/workers/{id}": {
-          "get": {
-             "summary": "Gets a worker",
-             "description": "Returns a worker for its id",
-             "parameters": [
-                {
-                   "name": "id",
-                   "in": "path",
-                   "required": true,
-                   "description": "The worker's id",
+                 },
+                 "email": {
                    "type": "string"
-                }
-             ],
-             "responses": {
-                "200": {
-                   "description": "worker",
-                   "schema": {
-                      "properties": {
-                         "name": {
-                            "type": "string"
-                         },
-                         "surname": {
-                            "type": "string"
-                         },
-                         "phone_num": {
-                            "type": "string"
-                         }
-                      }
-                   }
-                },
-                "404": {
-                   "description": "The worker does not exists."
-                }
-             }
-          }
-       },
-       "/constructions": {
-          "get": {
-             "summary": "Gets all constructions",
-             "description": "Returns a list containing all constructions.",
-             "responses": {
-                "200": {
-                   "description": "A list of constructions",
-                   "schema": {
-                      "type": "array",
-                      "items": {
-                         "properties": {
-                            "location": {
-                               "type": "string"
-                            },
-                            "site_name": {
-                               "type": "string"
-                            },
-                            "used": {
-                               "type": "boolean"
-                            }
-                         }
-                      }
-                   }
-                }
-             }
-          },
-          "post": {
-             "summary": "Creates a construction",
-             "description": "Adds a new construction to the list.",
-             "parameters": [
-                {
-                   "name": "construction",
-                   "in": "body",
-                   "description": "To create a construction.",
-                   "schema": {
-                      "required": [
-                         "location",
-                         "site_name",
-                         "used"
-                      ],
-                      "properties": {
-                         "location": {
-                            "type": "string"
-                         },
-                         "site_name": {
-                            "type": "string"
-                         },
-                         "used": {
-                            "type": "boolean"
-                         }
-                      }
-                   }
-                }
-             ],
-             "responses": {
-                "204": {
-                   "description": "Construction succesfully created."
-                },
-                "400": {
-                   "description": "Construction couldn't have been created."
-                }
-             }
-          }
-       },
-       "/constructions/{id}": {
-          "get": {
-             "summary": "Gets a construction",
-             "description": "Returns a construction for its id",
-             "parameters": [
-                {
-                   "name": "id",
-                   "in": "path",
-                   "required": true,
-                   "description": "The construction's id",
+                 },
+                 "password": {
                    "type": "string"
-                }
-             ],
-             "responses": {
-                "200": {
-                   "description": "construction",
-                   "schema": {
-                      "properties": {
-                         "location": {
-                            "type": "string"
-                         },
-                         "site_name": {
-                            "type": "string"
-                         },
-                         "used": {
-                            "type": "boolean"
-                         }
-                      }
-                   }
-                },
-                "404": {
-                   "description": "The construction does not exists."
-                }
+                 }
+               }
              }
-          }
+           }
+         ],
+         "responses": {
+           "204": {
+             "description": "Admin succesfully created."
+           },
+           "400": {
+             "description": "Admin couldn't have been created."
+           }
+         }
+       },
+       "put": {
+         "summary": "updated an admin",
+         "description": "updates a single admin for its id",
+         "parameters": [
+           {
+             "name": "admin",
+             "in": "body",
+             "required": true,
+             "description": "The admin's id",
+             "schema": {
+               "required": [
+                 "name",
+                 "surname",
+                 "email",
+                 "password",
+                 "id"
+               ],
+               "properties": {
+                 "name": {
+                   "type": "string"
+                 },
+                 "surname": {
+                   "type": "string"
+                 },
+                 "email": {
+                   "type": "string"
+                 },
+                 "password": {
+                   "type": "string"
+                 },
+                 "id": {
+                   "type": "string"
+                 }
+               }
+             }
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "An Admin has been updated"
+           },
+           "404": {
+             "description": "The Admin does not exist"
+           }
+         }
        }
-    }
+     },
+     "/admins/{id}": {
+       "get": {
+         "summary": "Gets an admin",
+         "description": "Returns a single admin for its id",
+         "parameters": [
+           {
+             "name": "id",
+             "in": "path",
+             "required": true,
+             "description": "The admin's id",
+             "type": "string"
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "An admin",
+             "schema": {
+               "properties": {
+                 "name": {
+                   "type": "string"
+                 },
+                 "surname": {
+                   "type": "string"
+                 },
+                 "email": {
+                   "type": "string"
+                 },
+                 "password": {
+                   "type": "string"
+                 }
+               }
+             }
+           },
+           "404": {
+             "description": "The Admin does not exists"
+           }
+         }
+       },
+       "delete": {
+         "summary": "Deletes an admin",
+         "description": "Deletes a single admin for its id",
+         "parameters": [
+           {
+             "name": "id",
+             "in": "path",
+             "required": true,
+             "description": "The admin's id",
+             "type": "string"
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "An Admin has been deleted"
+           },
+           "404": {
+             "description": "The Admin does not exists"
+           }
+         }
+       }
+     },
+     "/time": {
+       "get": {
+         "summary": "Gets all time",
+         "description": "Returns a list containing all time.",
+         "responses": {
+           "200": {
+             "description": "A list of time",
+             "schema": {
+               "type": "array",
+               "items": {
+                 "properties": {
+                   "worker_id": {
+                     "type": "string"
+                   },
+                   "construction_id": {
+                     "type": "string"
+                   },
+                   "admin_id": {
+                     "type": "string"
+                   },
+                   "Timestamp_date": {
+                     "type": "string",
+                     "format": "date"
+                   },
+                   "Shift": {
+                     "type": "number"
+                   }
+                 }
+               }
+             }
+           }
+         }
+       },
+       "post": {
+         "summary": "Creates a time",
+         "description": "Adds a new time to the list.",
+         "parameters": [
+           {
+             "name": "time",
+             "in": "body",
+             "description": "To create a time.",
+             "schema": {
+               "required": [
+                 "worker_id",
+                 "construction_id",
+                 "admin_id",
+                 "Timestamp_date",
+                 "Shift"
+               ],
+               "properties": {
+                 "worker_id": {
+                   "type": "string"
+                 },
+                 "construction_id": {
+                   "type": "string"
+                 },
+                 "admin_id": {
+                   "type": "string"
+                 },
+                 "Timestamp_date": {
+                   "type": "string",
+                   "format": "date"
+                 },
+                 "Shift": {
+                   "type": "number"
+                 }
+               }
+             }
+           }
+         ],
+         "responses": {
+           "204": {
+             "description": "Time succesfully created."
+           },
+           "400": {
+             "description": "Time couldn't have been created."
+           }
+         }
+       },
+       "put": {
+         "summary": "updates time",
+         "description": "updates time for its id",
+         "parameters": [
+           {
+             "name": "time",
+             "in": "body",
+             "required": true,
+             "description": "The time's id",
+             "schema": {
+               "required": [
+                 "worker_id",
+                 "construction_id",
+                 "admin_id",
+                 "Timestamp_date",
+                 "Shift"
+               ],
+               "properties": {
+                 "worker_id": {
+                   "type": "string"
+                 },
+                 "construction_id": {
+                   "type": "string"
+                 },
+                 "admin_id": {
+                   "type": "string"
+                 },
+                 "Timestamp_date": {
+                   "type": "string",
+                   "format": "date"
+                 },
+                 "Shift": {
+                   "type": "number"
+                 }
+               }
+             }
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "An Admin has been updated"
+           },
+           "404": {
+             "description": "The Admin does not exist"
+           }
+         }
+       }
+     },
+     "/time/{id}": {
+       "get": {
+         "summary": "Gets time",
+         "description": "Returns time for its id",
+         "parameters": [
+           {
+             "name": "id",
+             "in": "path",
+             "required": true,
+             "description": "The time's id",
+             "type": "string"
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "time",
+             "schema": {
+               "properties": {
+                 "worker_id": {
+                   "type": "string"
+                 },
+                 "construction_id": {
+                   "type": "string"
+                 },
+                 "admin_id": {
+                   "type": "string"
+                 },
+                 "Timestamp_date": {
+                   "type": "string",
+                   "format": "date"
+                 },
+                 "Shift": {
+                   "type": "number"
+                 }
+               }
+             }
+           },
+           "404": {
+             "description": "The time does not exists."
+           }
+         }
+       },
+       "delete": {
+         "summary": "Deletes time",
+         "description": "Deletes time for its id",
+         "parameters": [
+           {
+             "name": "id",
+             "in": "path",
+             "required": true,
+             "description": "The time's id",
+             "type": "string"
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "Time has been deleted"
+           },
+           "404": {
+             "description": "Time does not exists"
+           }
+         }
+       }
+     },
+     "/workers": {
+       "get": {
+         "summary": "Gets all workers",
+         "description": "Returns a list containing all workers.",
+         "responses": {
+           "200": {
+             "description": "A list of workers",
+             "schema": {
+               "type": "array",
+               "items": {
+                 "properties": {
+                   "name": {
+                     "type": "string"
+                   },
+                   "surname": {
+                     "type": "string"
+                   },
+                   "phone_num": {
+                     "type": "string"
+                   }
+                 }
+               }
+             }
+           }
+         }
+       },
+       "post": {
+         "summary": "Creates a worker",
+         "description": "Adds a new worker to the list.",
+         "parameters": [
+           {
+             "name": "worker",
+             "in": "body",
+             "description": "To create a worker.",
+             "schema": {
+               "required": [
+                 "name",
+                 "surname",
+                 "phone_num"
+               ],
+               "properties": {
+                 "name": {
+                   "type": "string"
+                 },
+                 "surname": {
+                   "type": "string"
+                 },
+                 "phone_num": {
+                   "type": "string"
+                 }
+               }
+             }
+           }
+         ],
+         "responses": {
+           "204": {
+             "description": "Worker succesfully created."
+           },
+           "400": {
+             "description": "Worker couldn't have been created."
+           }
+         }
+       },
+       "put": {
+         "summary": "updates a worker",
+         "description": "updates a worker for its id",
+         "parameters": [
+           {
+             "name": "worker",
+             "in": "body",
+             "required": true,
+             "description": "The workes's id",
+             "schema": {
+               "required": [
+                 "name",
+                 "surname",
+                 "phone_num"
+               ],
+               "properties": {
+                 "name": {
+                   "type": "string"
+                 },
+                 "surname": {
+                   "type": "string"
+                 },
+                 "phone_num": {
+                   "type": "string"
+                 }
+               }
+             }
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "A worker has been updated"
+           },
+           "404": {
+             "description": "The worker does not exist"
+           }
+         }
+       }
+     },
+     "/workers/{id}": {
+       "get": {
+         "summary": "Gets a worker",
+         "description": "Returns a worker for its id",
+         "parameters": [
+           {
+             "name": "id",
+             "in": "path",
+             "required": true,
+             "description": "The worker's id",
+             "type": "string"
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "worker",
+             "schema": {
+               "properties": {
+                 "name": {
+                   "type": "string"
+                 },
+                 "surname": {
+                   "type": "string"
+                 },
+                 "phone_num": {
+                   "type": "string"
+                 }
+               }
+             }
+           },
+           "404": {
+             "description": "The worker does not exists."
+           }
+         }
+       },
+       "delete": {
+         "summary": "Deletes a worker",
+         "description": "Deletes a worker for its id",
+         "parameters": [
+           {
+             "name": "id",
+             "in": "path",
+             "required": true,
+             "description": "The worker's id",
+             "type": "string"
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "A worker has been deleted"
+           },
+           "404": {
+             "description": "Worker does not exists"
+           }
+         }
+       }
+     },
+     "/constructions": {
+       "get": {
+         "summary": "Gets all constructions",
+         "description": "Returns a list containing all constructions.",
+         "responses": {
+           "200": {
+             "description": "A list of constructions",
+             "schema": {
+               "type": "array",
+               "items": {
+                 "properties": {
+                   "location": {
+                     "type": "string"
+                   },
+                   "site_name": {
+                     "type": "string"
+                   },
+                   "used": {
+                     "type": "boolean"
+                   }
+                 }
+               }
+             }
+           }
+         }
+       },
+       "post": {
+         "summary": "Creates a construction",
+         "description": "Adds a new construction to the list.",
+         "parameters": [
+           {
+             "name": "construction",
+             "in": "body",
+             "description": "To create a construction.",
+             "schema": {
+               "required": [
+                 "location",
+                 "site_name",
+                 "used"
+               ],
+               "properties": {
+                 "location": {
+                   "type": "string"
+                 },
+                 "site_name": {
+                   "type": "string"
+                 },
+                 "used": {
+                   "type": "boolean"
+                 }
+               }
+             }
+           }
+         ],
+         "responses": {
+           "204": {
+             "description": "Construction succesfully created."
+           },
+           "400": {
+             "description": "Construction couldn't have been created."
+           }
+         }
+       },
+       "put": {
+         "summary": "updates a construction",
+         "description": "updates a construction for its id",
+         "parameters": [
+           {
+             "name": "construction",
+             "in": "body",
+             "required": true,
+             "description": "The workes's id",
+             "schema": {
+               "required": [
+                 "location",
+                 "site_name",
+                 "used"
+               ],
+               "properties": {
+                 "location": {
+                   "type": "string"
+                 },
+                 "site_name": {
+                   "type": "string"
+                 },
+                 "used": {
+                   "type": "boolean"
+                 }
+               }
+             }
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "A construction has been updated"
+           },
+           "404": {
+             "description": "The construction does not exist"
+           }
+         }
+       }
+     },
+     "/constructions/{id}": {
+       "get": {
+         "summary": "Gets a construction",
+         "description": "Returns a construction for its id",
+         "parameters": [
+           {
+             "name": "id",
+             "in": "path",
+             "required": true,
+             "description": "The construction's id",
+             "type": "string"
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "construction",
+             "schema": {
+               "properties": {
+                 "location": {
+                   "type": "string"
+                 },
+                 "site_name": {
+                   "type": "string"
+                 },
+                 "used": {
+                   "type": "boolean"
+                 }
+               }
+             }
+           },
+           "404": {
+             "description": "The construction does not exists."
+           }
+         }
+       },
+       "delete": {
+         "summary": "Deletes a constructio",
+         "description": "Deletes a construction for its id",
+         "parameters": [
+           {
+             "name": "id",
+             "in": "path",
+             "required": true,
+             "description": "The construction's id",
+             "type": "string"
+           }
+         ],
+         "responses": {
+           "200": {
+             "description": "Construction has been deleted"
+           },
+           "404": {
+             "description": "Construction does not exists"
+           }
+         }
+       }
+     }
+   }
  }
