@@ -1,4 +1,4 @@
 # attendance-diary-api
 An API for a an attendance-diary project.
 
-The current API for testing: https://attendance-diary.herokuapp.com/admins  
+All of the documentation on: https://attendance-diary.heokuapp.com/diary/docs
