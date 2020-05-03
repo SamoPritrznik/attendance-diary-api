@@ -152,7 +152,7 @@ router.put('/workers', function (req, res) {
 
 //vstavi čas
 router.post('/time', function (req, res) {
-    Workers.create({
+    Time.create({
             worker_id: req.body.worker_id,
             admin_id: req.body.admin_id,
             construction_id: req.body.construction_id,
