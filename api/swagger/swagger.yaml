@@ -1,7 +1,7 @@
 
 swagger: "2.0"
 info: 
-  version: "1.0.0"
+  version: "22.0.0"
   title: "attendance-diary-api documentation"
   description: "a documentation explaining how the restfull api works"
 schemes:
@@ -59,13 +59,9 @@ paths:
     get:
       summary: Gets an admin
       description: Returns a single admin for its id
-      parameters:
+      parameters: 
         - name: id
-        - surname: surname
-        - 
-          in: 
-            - path
-            - body
+          in: path
           required: true
           description: The admin's id
           type: string
