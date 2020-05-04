@@ -51,8 +51,8 @@ router.delete('/admins/:id', function (req, res) {
 });
 
 //posodobi enega admina
-router.put('/admins', function (req, res) {
-    Admins.findByIdAndUpdate(req.body.id, req.body, {new: true}, function (err, admin) {
+router.put('/admins/:id', function (req, res) {
+    Admins.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, admin) {
         if (err) return res.status(500).send("Prišlo je do težave z posodabljanjem admina");
         res.status(200).send(admin);
     });
@@ -97,8 +97,8 @@ router.delete('/constructions/:id', function (req, res) {
 });
 
 //posodobi eno gradbišče 
-router.put('/constructions', function (req, res) {
-    Constructions.findByIdAndUpdate(req.body.id, req.body, {new: true}, function (err, construction) {
+router.put('/constructions/:id', function (req, res) {
+    Constructions.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, construction) {
         if (err) return res.status(500).send("Prišlo je do težave z posodabljanjem gradbišča");
         res.status(200).send(construction);
     });
@@ -143,8 +143,8 @@ router.delete('/workers/:id', function (req, res) {
 });
 
 //posodobi enega delavca 
-router.put('/workers', function (req, res) {
-    Workers.findByIdAndUpdate(req.body.id, req.body, {new: true}, function (err, worker) {
+router.put('/workers/:id', function (req, res) {
+    Workers.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, worker) {
         if (err) return res.status(500).send("Prišlo je do težave z posodabljanjem delavca");
         res.status(200).send(worker);
     });
@@ -193,8 +193,8 @@ router.delete('/time/:id', function (req, res) {
 router.use('/docs', swaggerUi.serve, swaggerUi.setup(SwaggerDocument));
 
 //posodobi en čas
-router.put('/time', function (req, res) {
-    Time.findByIdAndUpdate(req.body.id, req.body, {new: true}, function (err, time) {
+router.put('/time/:id', function (req, res) {
+    Time.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, time) {
         if (err) return res.status(500).send("Prišlo je do težave z posodabljanjem časa");
         res.status(200).send(time);
     });

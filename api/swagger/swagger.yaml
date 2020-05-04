@@ -69,7 +69,6 @@ paths:
               - surname
               - email
               - password
-              - id
             properties:
               name:
                 type: string
@@ -78,8 +77,6 @@ paths:
               email:
                 type: string
               password:
-                type: string
-              id:
                 type: string
           
       responses:
